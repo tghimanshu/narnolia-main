@@ -120,35 +120,6 @@ app.get("/api/getpfs", (req, res) => {
   });
 });
 
-app.get("/api/:id", (req, res) => {
-  fs.readFile("config.json", async (err, data) => {
-    const allConfig = JSON.parse(data);
-    if (allConfig.access !== true) {
-      getAuthKey(allConfig);
-    } else {
-      const pfs = await getPortfolios(allConfig);
-      const a = pfs.filter((a) => a.Id.toString() === req.params.id);
-      a[0] &&
-        res.render("testingDetails", {
-          portfolio: a[0],
-          fullDesc: allConfig[a[0].ModelName],
-        });
-    }
-  });
-});
-
-app.get("/api/", (req, res) => {
-  fs.readFile("config.json", async (err, data) => {
-    const allConfig = JSON.parse(data);
-    if (allConfig.access !== true) {
-      getAuthKey(allConfig);
-    } else {
-      const pfs = await getPortfolios(allConfig);
-      res.render("testing", { pfs: pfs });
-    }
-  });
-});
-
 app.get("/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
