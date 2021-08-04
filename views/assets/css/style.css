@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+p {
+  margin: 0;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.nav-link {
+  padding: 0;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #fafafa;
+}
+
+.navbar-brand > img {
+  width: 80px;
+}
+
+/* HERO SECTION */
+#hero {
+  height: 100vh;
+  background-color: #fafafa;
+}
+#hero > .container {
+  height: 100%;
+}
+.hero-content {
+  height: 100%;
+  margin: 0 auto;
+}
+.hero-content > h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 58px;
+  font-weight: 800;
+  text-align: center;
+}
+.hero-content > p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #737373;
+  text-align: center;
+}
+.heroBtn > .btn-warning {
+  color: #ffa62b;
+  color: white;
+}
+.heroBtn > .btn-outline-info {
+  color: #00a0c1;
+  border-color: #00a0c1;
+}
+
+/* WHY CHOOSE US */
+
+.wcu-h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.wcu-p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #737373;
+}
+
+.features h5 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.features p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.myCard {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.card {
+  padding: 0;
+}
+.myCard > div:first-child {
+  width: 100%;
+}
+.myCard > div:first-child > div:first-child {
+  width: 30%;
+}
+
+@media only screen and (max-width: 900px) {
+  .hero-content > h1 {
+    font-size: 32px;
+    text-align: left;
+  }
+  .hero-content > p {
+    font-size: 12px;
+    text-align: left;
+  }
+  .heroBtn > .btn {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+  .wcu-h1 {
+    font-size: 30px;
+  }
+}

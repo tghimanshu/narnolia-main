@@ -1,0 +1,145 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Narmolia</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/f18602a097.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <header class="main-header">
+        <div class="container">
+          <!-- NAVBAR -->
+          <nav class="navbar navbar-expand-lg navbar-light py-1">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">
+                <img
+                  src="https://www.advisorzaroorihai.com/assets/img/site-logo.png"
+                  alt=""
+                />
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav ms-auto me-0">
+                  <li class="nav-item"><a>Have any questions?</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">See FAQs &gt; </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- HERO SECTION -->
+      <section id="hero">
+        <div class="container">
+          <div class="row hero-content d-flex flex-row align-items-center">
+            <div class="col-12 col-lg-6">
+              <h1 class="mb-3">
+                Built on a Legacy, Aesearch, Observation and Knowledge
+              </h1>
+              <p class="mb-2 px-4">
+                NS Investment Portfolios are research-backed thematic baskets
+                designed to provide professional competency while retaining the
+                flexibility of direct ownership of stocks, for long-term wealth
+                creation.
+              </p>
+            </div>
+            <div class="col-12 col-lg-6">
+              <img src="assets/images/hero-img.png" alt="" width="100%" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- WHY CHOOSE US -->
+      <section id="whyChooseUs">
+        <div class="container">
+          <div>
+            <h1 class="fw-bold wcu-h1">
+              Pick Your NS Investment Advisory Portfolio
+            </h1>
+          </div>
+          <div class="row mx-0">
+            {{#each pfs}}
+              <div class="col-12 card mb-2">
+                <a href="/{{this.Id}}">
+                  <div class="card-body myCard">
+                    <div class="d-flex pe-3">
+                      <div class="me-4 position-relative card-img">
+                        <img src={{this.ImageURL}} alt="" width="80px" />
+                      </div>
+                      <div>
+                        <h5>{{this.ModelName}}</h5>
+                        <p class="mb-3">
+                          {{this.Description}}
+                        </p>
+                        <div class="row">
+                          <div class="col-4">
+                            <p class="fw-bold">1 Yr Return</p>
+                            <p>{{this.BenchmarkReturn}}</p>
+                          </div>
+                          <div class="col-4">
+                            <p class="fw-bold">Min. Investment</p>
+                            <p class="fw-bold">Rs. {{this.MinInvestAmt}}</p>
+                          </div>
+                          <div class="col-4">
+                            <p class="fw-bold">Risk Profile</p>
+                            <p>{{this.RiskCategory}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-between">
+                      <div class="ms-5">
+                        <button class="btn btn-dark" style="width: 100%">
+                          Invest Now
+                        </button>
+                        <small class="text-center">Already Invested? Login to
+                          Top Up</small>
+                      </div>
+                      <small class="text-center">See Pass Performance</small>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- SCRIPTS -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

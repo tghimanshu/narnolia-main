@@ -1,0 +1,298 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/f18602a097.js"
+      crossorigin="anonymous"
+    >
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/testing.css" />
+    <link rel="stylesheet" href="assets/css/testingDetails.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  </head>
+  <body>
+    <div class="">
+      <header class="Header__header__1qRCL">
+        <div class="Header__header-container__2v8Mg app-container">
+          <div class="Header__header-left__1nDkK">
+            <a class="Header__link-logo__2eERP" href="/">
+              <img
+                src="https://assets.smallcase.com/images/publishers/azh-Consultants/logo.png"
+                class="Header__logo__2jKwz"
+                alt="AZH Consultants LLP"
+              />
+            </a>
+          </div>
+          <div class="Header__header-right__3MaaF">
+            <p class="link font-medium ml8 flex">
+              See FAQs<span class="Display__web__HdJg1">
+                <i class="Header__arrow__1XukL icon-chevron-right">
+                </i>
+              </span>
+            </p>
+            <span class="Display__web__HdJg1">Have any questions?</span>
+          </div>
+        </div>
+      </header>
+      <div class="grid-container relative">
+        <section class="banner-colored SmallcaseBanner__banner__1d7Nk">
+          <div
+            class="flex-start flex-direction-column-on-mobile SmallcaseBanner__smallcase-banner__1GYyx"
+          >
+            <div class="flex-apart-top SmallcaseBanner__info-container__k90Zi">
+              <img
+                class="img SmallcaseBanner__smallcase-image__1AGlH"
+                src="https://assets.smallcase.com/images/smallcases/160/CDGMO_0003.png"
+                style="font-size:26.666666666666668px"
+                alt="Credent Small &amp; Mid Cap Winners"
+              />
+              <div class="SmallcaseBanner__title-section__2lvy4">
+                <h1
+                  class="ellipsis SmallcaseBanner__name__2GboS font-medium mb8"
+                >{{portfolio.ModelName}}</h1>
+                <div
+                  class="SmallcaseBanner__description__2bFnQ text-15 lh-157 mb8 text-dark"
+                >{{portfolio.Description}}
+                </div>
+                <div class="badge bg-success mb-2">{{portfolio.RiskCategory}}</div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <small>1 Yr Return - </small>
+                    <small>{{portfolio.AnnualisedReturn}}</small>
+                    <small>Min. Investment Amount - </small>
+                    <small class="fw-bold">{{portfolio.MinInvestAmt}}</small>
+                  </div>
+                  <div>
+                    <small>Benchmark - </small>
+                    <small class="fw-bold">{{portfolio.BenchmarkReturn}}</small>
+                  </div>
+                  <div>
+                    <small>No. of Stocks - </small>
+                    <small class="fw-bold">{{portfolio.MinSIPAmt}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="description_section">
+          <div class="mt-4">
+            <h1 class="mb-0 fw-bold">Overview</h1>
+            <hr style="height: 2px;" class="mt-2" />
+            <div class="row">
+              <div class="col-9">
+                <div class="row d-flex align-items-center">
+                  <div class="col-8">{{{fullDesc}}}</div>
+                  <div class="col-4">
+                    <p class="d-block fw-bold mb-1">Factsheet</p>
+                    <p class="d-block fw-bold">Download key points about this
+                      IAP</p>
+                    <button class="btn btn-lg mt-2 btn-outline-dark">Download
+                      Factsheet</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-dark mb-2" style="width: 100%">
+                  Invest Now
+                </button>
+                <small class="text-center">Already Invested? <a href="#">Login to Top Up</a></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="past_performance_section">
+          <div class="mt-4">
+            <h1 class="mb-0 fw-bold">Past Performanc vs Nifty 100 Index</h1>
+          </div>
+          <div class="container mt-4">
+            <h1 class="mb-0">Return Comparision</h1>
+            <hr style="width: 5%; height: 6px; background: #1D3750; opacity: 1;" />
+          </div>
+          <canvas id="myChart" width="400" height="400"></canvas>
+					<small>Note: Past performance graph includes changes due to rebalance, events like stock splits &amp; mergers. Also, past performance doesn't guarantee future returns</small>
+					<div class="values">
+						<h1 class="bg-dark text-white text-center mt-2 py-2">Value of INR 1 Crore Invested In</h1>
+						<h1 class="text-center py-2 d-flex justify-content-evenly" style="border-bottom: 1px solid #1D3750">
+							<div>NS Industry Leaders - Rs. 1.57 Crore</div>
+							<div>Vs</div>
+							<div>Nifty 100 Index - Rs. 1.55 Crore</div>
+						</h1>
+					</div>
+        </div>
+        <div class="port_alloc">
+          <div class="mt-4">
+            <h1 class="mb-0 fw-bold">Portfolio Allocation</h1>
+						<div class="row">
+							<div class="col-6">
+								<h1 class="text-center fw-bold py-2" style="background-color: #F1F2F2;">Top 5 Holdings</h1>
+                <canvas id="myLeftDn" width="100%"></canvas>
+							</div>
+							<div class="col-6">
+								<h1 class="text-center fw-bold py-2" style="background-color: #F1F2F2;">Top 5 Sectors</h1>
+                <canvas id="myRightDn" width="100%"></canvas>
+							</div>
+						</div>
+          </div>
+        </div>
+        <footer class="Footer__footer-wrapper__eC-ci"><div class="Footer__container__3dfAC app-container"><div class="Footer__nobroker-info__2N0Wq app-container"><div class="Footer__footer-left__2Wdi7"><a class="Footer__mv16__2_8i_" href="/"><img src="https://assets.smallcase.com/images/publishers/azh-Consultants/logo.png" class="Footer__footer-logo__1ByAg" alt=""></a><div class="Footer__desc__10s3I text-14 lh-157 Footer__mv16__2_8i_">Advisor Zaroori Hai is a comprehensive platform for individuals wanting to make informed and timely financial decisions and connect with expert advisors from across the country.</div></div><div class="Footer__nobroker-social__2t1t3"><div class="text-right mb32 Footer__social-icons__vP2dl Footer__mv16__2_8i_"><a href="https://www.facebook.com/AdvisorZarooriHai" target="_blank" rel="noopener noreferrer"><i class="icon-facebook text-24 Footer__social-icon__LdYTh"></i></a><a href="https://www.linkedin.com/company/advisorzaroorihai" target="_blank" rel="noopener noreferrer"><i class="icon-linkedin text-24 Footer__social-icon__LdYTh"></i></a><a href="https://www.youtube.com/c/AdvisorZarooriHai/featured" target="_blank" rel="noopener noreferrer"><i class="icon-youtube text-24 Footer__social-icon__LdYTh"></i></a><a href="tel:9920056391" class="Display__mweb__3geYZ "><i class="icon-phone text-24 Footer__social-icon__LdYTh"></i></a><a href="mailto:support@advisorzaroorihai.com" target="_blank" rel="noopener noreferrer" class="Display__mweb__3geYZ "><i class="icon-mail text-24 Footer__social-icon__LdYTh"></i></a></div><span class="Display__web__HdJg1 "><div class="text-normal"><p><a class="Footer__support-link__1izck text-normal text-14" href="tel:9920056391">9920056391</a><span class="Footer__divider__kJylR">|</span><a class="Footer__support-link__1izck text-normal text-14" href="mailto:support@advisorzaroorihai.com">support@advisorzaroorihai.com</a></p></div></span></div></div></div><div class="Footer__btm-container__3H6aD app-container Footer__p0__S7ID6"><div class="Footer__footer__2dyxG app-container"><span class="MoreInfo__footer-link__29_Dx text-normal text-12 MoreInfo__end__1Z9iT"><span class="lh-138">More</span><i class="text-16 m14 icon-chevron-down"></i><div class="relative text-normal"></div></span><a class="Footer__footer-link__1tqm3 text-normal text-12" target="_blank" rel="noopener noreferrer" href="https://advisorzaroorihai.com">advisorzaroorihai.com</a></div></div></footer>
+      </div>
+    </div>
+    <!-- SCRIPTS -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    >
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    >
+    </script>
+    <script>
+      // round corners
+
+     //Rounded Doughnut
+      //Performance Line Chart
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+var myChart = new Chart(ctx, {
+  type: 'line',
+  options: {
+    scales: {
+      xAxes: [{
+        type: 'time',
+      }]
+    }
+  },
+  data: {
+    labels: ["2015-03-15T13:03:00Z", "2015-03-25T13:02:00Z", "2015-04-25T14:12:00Z"],
+    datasets: [{
+      label: 'Demo',
+      data: [{
+          t: '2015-03-15T13:03:00Z',
+          y: 12
+        },
+        {
+          t: '2015-03-25T13:02:00Z',
+          y: 21
+        },
+        {
+          t: '2015-04-25T14:12:00Z',
+          y: 32
+        }
+      ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  }
+});
+
+      var dnctx = document.getElementById('myLeftDn').getContext('2d');
+      var myLeftDn = new Chart(dnctx, {
+        type: 'doughnut',
+        data: {
+        labels: [
+        {{#each portfolio.modelCompositionData}}
+          '{{this.ScripName}}',
+        {{/each}}
+        ],
+        datasets: [{
+              label: 'My First Dataset',
+              data: [
+                {{#each portfolio.modelCompositionData}}
+                  '{{this.Weightage}}',
+                {{/each}}
+              ],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ]
+          }]
+        },
+        options: {
+          aspectRatio: 2/1,
+          layout: {
+            padding:20 
+          },
+          elements: {
+            arc: {
+                roundedCornersFor: 0
+            },
+          },
+          plugins: {
+            legend: {
+              position: 'right'
+            }
+          }
+        }
+      })
+
+
+      var dnctx = document.getElementById('myRightDn').getContext('2d');
+      var myRightDn = new Chart(dnctx, {
+        type: 'doughnut',
+        data: {
+        labels: [
+        {{#each portfolio.TopFiveSector}}
+          '{{this.S_SECTOR}}',
+        {{/each}}
+        ],
+        datasets: [{
+              label: 'My First Dataset',
+              data: [
+                {{#each portfolio.TopFiveSector}}
+                  '{{this.weightage}}',
+                {{/each}}
+              ],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ]
+          }]
+        },
+        options: {
+          aspectRatio: 2/1,
+          layout: {
+            padding:20 
+          },
+          plugins: {
+            legend: {
+              position: 'right'
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
