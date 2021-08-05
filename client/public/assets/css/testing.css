@@ -682,12 +682,6 @@ h2.display {
 .lh-157 {
   line-height: 1.57;
 }
-@media (max-width: 359px) {
-  h2.display {
-    font-size: 24px;
-    letter-spacing: -0.4px;
-  }
-}
 @media (max-width: 1183px) {
   h2 {
     font-size: 18px;
@@ -933,10 +927,12 @@ h2.display {
   margin-bottom: 16px;
 }
 .NameHolder__desc-title__3tqmC {
-  display: none;
+  display: block;
   color: #2f363f;
   letter-spacing: -0.2px;
   width: 100%;
+  font-weight: 900;
+  margin-bottom: 6px;
 }
 .NameHolder__image-container-large__3aN46 {
   margin-right: 32px;
@@ -944,7 +940,12 @@ h2.display {
   height: 56px;
 }
 .NameHolder__image-container-large__3aN46.NameHolder__image-desktop__22zbz {
-  display: none;
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 @media (min-width: 1184px) {
   .NameHolder__name-container__1rnV8 {
@@ -954,6 +955,9 @@ h2.display {
   }
   .NameHolder__image-container-large__3aN46.NameHolder__image-desktop__22zbz {
     display: inline-block;
+    margin-right: 32px;
+    width: 56px;
+    height: 56px;
   }
   .NameHolder__desc-title__3tqmC {
     display: inline-block;
@@ -1043,7 +1047,7 @@ h2.display {
   display: flex;
 }
 .CardView__comp-btn__2Yhfm {
-  display: none;
+  display: block;
   line-height: 1;
 }
 .CardView__icon-align__3IFYj {
@@ -1130,6 +1134,24 @@ h2.display {
     min-width: 50% !important;
     width: 50%;
     padding: 12px 13px;
+  }
+}
+@media (max-width: 800px) {
+  .CardView__riskContainer__RKXM9 {
+    display: none;
+  }
+  .CardView__action-holder__2BZvX {
+    flex-direction: column;
+  }
+  .CardView__action-holder__2BZvX > a {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 359px) {
+  h2.display {
+    font-size: 24px;
+    letter-spacing: -0.4px;
   }
 }
 /*! CSS Used fontfaces */

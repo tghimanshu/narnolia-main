@@ -944,7 +944,12 @@ h2.display {
   height: 56px;
 }
 .NameHolder__image-container-large__3aN46.NameHolder__image-desktop__22zbz {
-  display: none;
+  display: block;
+  width: 50%;
+  height: auto;
+  /* z-index: 1; */
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 @media (min-width: 1184px) {
   .NameHolder__name-container__1rnV8 {
@@ -953,7 +958,12 @@ h2.display {
     max-height: 530px;
   }
   .NameHolder__image-container-large__3aN46.NameHolder__image-desktop__22zbz {
-    display: inline-block;
+    display: block;
+    width: 50%;
+    height: auto;
+    z-index: 1;
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
   .NameHolder__desc-title__3tqmC {
     display: inline-block;

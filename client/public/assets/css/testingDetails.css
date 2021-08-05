@@ -959,3 +959,17 @@ p {
 .btn-outline-dark {
   border: 1px solid #1d3750;
 }
+
+@media (max-width: 800px) {
+  .SmallcaseBanner__info-container__k90Zi {
+    flex-direction: column;
+    align-content: center;
+  }
+  .SmallcaseBanner__smallcase-image__1AGlH {
+    min-width: 75%;
+    min-height: auto;
+    height: auto;
+    max-height: unset;
+    margin: 0 auto;
+  }
+}
