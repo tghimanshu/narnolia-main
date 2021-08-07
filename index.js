@@ -15,17 +15,21 @@ app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 async function getAuthKey(allConfig) {
-  const authData = await axios.post(
-    "https://invest.narnolia.in/modelApi/createSession",
-    {
-      staCode: allConfig.staCode,
-      staPassword: allConfig.staPassword,
-    }
-  );
-  allConfig[".aspxauth"] = authData.headers[".aspxauth"];
-  allConfig["access"] = true;
-  fs.writeFile("config.json", JSON.stringify(allConfig), () => {});
-  return allConfig;
+  try {
+    const authData = await axios.post(
+      "https://invest.narnolia.in/modelApi/createSession",
+      {
+        staCode: allConfig.staCode,
+        staPassword: allConfig.staPassword,
+      }
+    );
+    allConfig[".aspxauth"] = authData.headers[".aspxauth"];
+    allConfig["access"] = true;
+    fs.writeFile("config.json", JSON.stringify(allConfig), () => {});
+    return allConfig;
+  } catch (error) {
+    getAuthKey(allConfig);
+  }
 }
 
 async function getPortfolios(allConfig) {
