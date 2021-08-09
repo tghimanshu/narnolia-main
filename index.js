@@ -1,17 +1,12 @@
 const axios = require("axios");
 const express = require("express");
 const fs = require("fs");
-const hbs = require("hbs");
 const path = require("path");
 const app = express();
 const dateFormat = require("dateformat");
 const cors = require("cors");
 
-app.set("view engine", "hbs");
-app.set("views", "views");
-
 app.use(cors());
-app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 async function getAuthKey(allConfig) {
@@ -47,7 +42,6 @@ async function getPortfolios(allConfig) {
     );
     return pf.data.data;
   } catch (error) {
-    console.log(error);
     const newConfig = await getAuthKey(allConfig);
     getPortfolios(newConfig);
   }
@@ -95,7 +89,6 @@ async function getNAVDetails(allConfig, opt) {
     // console.log(pf);
     return pf.data.data;
   } catch (error) {
-    console.log(error);
     const newConfig = await getAuthKey(allConfig);
     getNAVDetails(newConfig);
   }

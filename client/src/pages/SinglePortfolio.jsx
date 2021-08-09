@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Doughnut, Line } from "react-chartjs-2";
 import { config } from "../config";
 import parse from "react-html-parser";
-import moment from "moment";
+// import moment from "moment";
 import "chartjs-adapter-moment";
 import "./SingleProfile.css";
 
@@ -19,20 +19,12 @@ export function SinglePortFolio({ match }) {
         const ourPf = data.data.filter(
           (pdf) => pdf.Id.toString() === match.params.id
         )[0];
-        console.log("PF Data");
-        console.log(ourPf);
-        console.log("all nav data");
-        console.log(data2.data);
-        console.log("specific nav data");
-        console.log(
-          data2.data.filter((nav) => nav.productCode === ourPf.productCode)
-        );
         setPf(ourPf);
         setNavs(
           data2.data.filter((nav) => nav.productCode === ourPf.productCode)
         );
       } catch (error) {
-        console.log(error);
+        window.location.reload();
       }
     };
     getData();

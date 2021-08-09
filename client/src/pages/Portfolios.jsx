@@ -14,7 +14,9 @@ export function Portfolios() {
       try {
         const data = await axios.get("/api/getpfs");
         setPfs([data.data[2], data.data[3], data.data[0], data.data[1]]);
-      } catch (error) {}
+      } catch (error) {
+        window.location.reload();
+      }
     };
     getData();
   }, []);
