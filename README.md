@@ -1,4 +1,8 @@
 # narnolia-main
+### Description
+
+A nodejs application for narnolia.
+
 ### Starting the project
 download and install nodejs - https://nodejs.org/en/ (LTS Version)
 ```bash
