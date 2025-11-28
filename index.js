@@ -9,6 +9,15 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.static(path.join(__dirname, "client", "build")));
 
+/**
+ * Authenticates with the Narnolia API and updates the configuration object with the session key.
+ * If authentication fails, it recursively retries.
+ *
+ * @async
+ * @function getAuthKey
+ * @param {Object} allConfig - The configuration object containing 'staCode' and 'staPassword'.
+ * @returns {Promise<Object>} The updated configuration object with '.aspxauth' token and 'access' set to true.
+ */
 async function getAuthKey(allConfig) {
   try {
     const authData = await axios.post(
@@ -27,6 +36,15 @@ async function getAuthKey(allConfig) {
   }
 }
 
+/**
+ * Fetches the master list of model portfolios from the Narnolia API.
+ * Retries authentication if the request fails.
+ *
+ * @async
+ * @function getPortfolios
+ * @param {Object} allConfig - The configuration object containing the authentication token.
+ * @returns {Promise<Array<Object>>} A promise that resolves to an array of portfolio objects.
+ */
 async function getPortfolios(allConfig) {
   try {
     const pf = await axios.post(
@@ -47,6 +65,16 @@ async function getPortfolios(allConfig) {
   }
 }
 
+/**
+ * Fetches the Net Asset Value (NAV) details for a specific time range from the Narnolia API.
+ * Retries authentication if the request fails.
+ *
+ * @async
+ * @function getNAVDetails
+ * @param {Object} allConfig - The configuration object containing the authentication token.
+ * @param {string} opt - The time range option ('3m', '1y', '3y', '5y', 'max').
+ * @returns {Promise<Array<Object>>} A promise that resolves to an array of NAV data objects.
+ */
 async function getNAVDetails(allConfig, opt) {
   try {
     const pf = await axios.post(
@@ -94,6 +122,16 @@ async function getNAVDetails(allConfig, opt) {
   }
 }
 
+/**
+ * API route to retrieve NAV details for a specified time range.
+ * Reads configuration, ensures authentication, and returns NAV data.
+ *
+ * @name get/api/getnavs/:time
+ * @function
+ * @param {Object} req - The Express request object.
+ * @param {string} req.params.time - The time range parameter.
+ * @param {Object} res - The Express response object.
+ */
 app.get("/api/getnavs/:time", (req, res) => {
   fs.readFile("config.json", async (err, data) => {
     const allConfig = JSON.parse(data);
@@ -105,6 +143,16 @@ app.get("/api/getnavs/:time", (req, res) => {
     }
   });
 });
+
+/**
+ * API route to retrieve all model portfolios.
+ * Reads configuration, ensures authentication, and returns portfolio data.
+ *
+ * @name get/api/getpfs
+ * @function
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ */
 app.get("/api/getpfs", (req, res) => {
   fs.readFile("config.json", async (err, data) => {
     const allConfig = JSON.parse(data);
@@ -117,10 +165,27 @@ app.get("/api/getpfs", (req, res) => {
   });
 });
 
+/**
+ * Route to serve the frontend application for a specific ID.
+ * Handled by React Router on the client side.
+ *
+ * @name get/:id
+ * @function
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ */
 app.get("/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
+/**
+ * Default route to serve the frontend application.
+ *
+ * @name get/
+ * @function
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ */
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });

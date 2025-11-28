@@ -3,6 +3,13 @@ import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
+/**
+ * Component to display a list of portfolios and their performance details.
+ * Fetches portfolio data and NAV (Net Asset Value) details from the API.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered component displaying the portfolios list.
+ */
 export function Portfolios() {
   const [pfs, setPfs] = useState([]);
   const [navs, setNavs] = useState([]);
@@ -10,6 +17,11 @@ export function Portfolios() {
   const [navTime, setNavTime] = useState("1y");
 
   useEffect(() => {
+    /**
+     * Fetches portfolio data from the backend.
+     * Sets the portfolios state sorted in a specific order.
+     * Reloads the page on error.
+     */
     const getData = async () => {
       try {
         const data = await axios.get("/api/getpfs");
@@ -21,6 +33,10 @@ export function Portfolios() {
     getData();
   }, []);
   useEffect(() => {
+    /**
+     * Fetches NAV details based on the selected time range.
+     * Updates the NAVs state.
+     */
     const getData = async () => {
       try {
         const data2 = await axios.get("/api/getnavs/" + navTime);
@@ -30,6 +46,12 @@ export function Portfolios() {
     getData();
   }, [navTime]);
 
+  /**
+   * Returns a colored span element based on the risk category.
+   *
+   * @param {string} rc - The risk category (e.g., "Conservative", "Moderate", "Aggressive").
+   * @returns {JSX.Element|undefined} A span element with appropriate color or undefined if no match.
+   */
   const showRiskCategory = (rc) => {
     switch (rc) {
       case "Conservative":
@@ -42,6 +64,14 @@ export function Portfolios() {
         break;
     }
   };
+
+  /**
+   * Calculates the percentage change in NAV or Benchmark NAV over the available data period.
+   *
+   * @param {string} data - The type of data to calculate percentage for ('nav' or other for benchmark).
+   * @param {Array<Object>} navs - The array of NAV objects containing 'navValue' and 'BenchmarkNAV'.
+   * @returns {number} The rounded percentage change.
+   */
   const getPercent = (data, navs) => {
     if (data === "nav") {
       return Math.round(
