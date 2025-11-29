@@ -7,11 +7,26 @@ import parse from "react-html-parser";
 import "chartjs-adapter-moment";
 import "./SingleProfile.css";
 
+/**
+ * Component to display details of a single portfolio.
+ * Fetches and displays portfolio information, performance graphs, and allocation charts.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.match - The match object from React Router, containing params.
+ * @param {string} props.match.params.id - The ID of the portfolio to display.
+ * @returns {JSX.Element} The rendered component displaying the single portfolio details.
+ */
 export function SinglePortFolio({ match }) {
   const [pf, setPf] = useState(null);
   const [navs, setNavs] = useState([]);
   const [navTime, setNavTime] = useState("1y");
   useEffect(() => {
+    /**
+     * Fetches portfolio data and NAV details for the specific portfolio ID.
+     * Updates the portfolio and NAVs state.
+     * Reloads the page on error.
+     */
     const getData = async () => {
       try {
         const data = await axios.get("/api/getpfs");
@@ -31,6 +46,12 @@ export function SinglePortFolio({ match }) {
   }, [match, navTime]);
 
   if (pf) {
+    /**
+     * Calculates the percentage change in NAV or Benchmark NAV over the available data period.
+     *
+     * @param {string} data - The type of data to calculate percentage for ('nav' or other for benchmark).
+     * @returns {number} The rounded percentage change.
+     */
     const getPercent = (data) => {
       if (data === "nav") {
         return Math.round(
